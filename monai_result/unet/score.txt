@@ -1,0 +1,4 @@
+📉 Train Loss: 0.4418 | Val Loss: 0.4471                                                                              
+📊 Val Metrics -> Dice: 0.8030 | IoU: 0.7209 | Acc: 0.9662
+
+loop 49
