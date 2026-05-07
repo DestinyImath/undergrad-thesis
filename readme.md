@@ -40,13 +40,11 @@ paper
 
 ## ⚙️ 环境依赖 (Dependencies)
 
-建议使用 Anaconda 创建独立环境，并安装以下核心库：
+建议使用 Anaconda 创建独立环境，并运行以下代码：
 
-Bashpip install torch torchvision
-pip install monai
-pip install opencv-python
-pip install pandas matplotlib tqdm scikit-learn
-
+```
+pip install requirements.txt
+```
 
 ## 🚀 快速开始 (Quick Start)
 
@@ -68,6 +66,12 @@ python preprocess_mask.py
 - 执行 MONAI 提供的几何仿射变换等数据增强。
 - 在验证集上严格把控分类阈值（Sigmoid > 0.5）。
 - 自动保存最佳 Dice 得分的模型权重至 result/ 目录，并生成定量评估报表与定性预测对比图。
+
+运行下述代码即可（以 `attention_unet` 为例）：
+
+```
+python attention_unet.py
+```
 
 ## 结果展示
 
