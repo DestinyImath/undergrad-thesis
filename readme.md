@@ -1,6 +1,6 @@
 # 毕业论文项目
 
-本仓库是本科毕业设计 《基于深度学习的乳腺超声肿瘤多任务分割与良恶性分类模型研究》 的官方实现代码。项目基于 BUSI 数据集，构建了一套包含严格数据清洗、空间归一化、自研混合损失计算及多模型消融对比的完整医学影像分割框架。
+本仓库是本科毕业设计 《乳腺肿瘤超声影像的深度学习分割模型与机制研究》 的官方实现代码。项目基于 BUSI 数据集，构建了一套包含严格数据清洗、空间归一化、自研混合损失计算及多模型消融对比的完整医学影像分割框架。
 
 ## 🌟 项目亮点 (Highlights)
 
@@ -12,6 +12,7 @@
 
 ## 📂 目录结构 (Repository Structure)
 
+```
 paper
 ├── Dataset_BUSI_with_GT/       # 原始下载的 BUSI 数据集 (需自行解压至此)
 ├── Dataset_BUSI_processed/     # 清洗与合并多重掩膜后的纯净数据集 (由脚本自动生成)
@@ -36,7 +37,7 @@ paper
 ├── preprocess_mask.py          # 数据集清洗与多重 Mask 像素级合并脚本
 ├── .gitignore                  # Git 提交忽略配置
 └── readme.md                   # 项目说明文档 (本文档)
-
+```
 
 ## ⚙️ 环境依赖 (Dependencies)
 
@@ -60,12 +61,12 @@ python preprocess_mask.py
 
 2. 模型训练
 
-通过运行项目的主入口脚本（可根据需要导入 func/ 目录下不同的网络架构如 deeplab_res50.py 或 attention_unet.py），调整当前函数的特殊模块，例如可以将 `use_aspp`、`use_decoder` 等设置为 `True` 或 `False`，还要注意调整函数`MODEL_NAME`的命名，系统会自动完成：
+通过运行项目的主入口脚本（可根据需要导入 `func/` 目录下不同的网络架构如 `deeplab_res50.py` 或 `attention_unet.py`），调整当前函数的特殊模块，例如可以将 `use_aspp`、`use_decoder` 等设置为 `True` 或 `False`，还要注意调整函数`MODEL_NAME`的命名，系统会自动完成：
 
 - 将图像 Resize 至 $256 \times 256$。
 - 执行 MONAI 提供的几何仿射变换等数据增强。
 - 在验证集上严格把控分类阈值（Sigmoid > 0.5）。
-- 自动保存最佳 Dice 得分的模型权重至 result/ 目录，并生成定量评估报表与定性预测对比图。
+- 自动保存最佳 Dice 得分的模型权重至 `result/` 目录，并生成定量评估报表与定性预测对比图。
 
 运行下述代码即可（以 `attention_unet` 为例）：
 
@@ -75,7 +76,7 @@ python attention_unet.py
 
 ## 结果展示
 
-在 BUSI 数据集的严格测试下，DeepLabV3+ (ResNet-50) 取得了最优的基线性能，而纯 Transformer 架构在小样本下存在明显的收敛瓶颈（详细机制分析请参阅论文正文）：
+在 BUSI 数据集的严格测试下，`DeepLabV3+ (ResNet-50)` 取得了最优的基线性能，而纯 Transformer 架构在小样本下存在明显的收敛瓶颈（详细机制分析请参阅论文正文）：
 
 | 🤖 Model | 🧩 Spatial Treatment | 📦 Params (M) | 🎯 DSC | 📐 IoU | ⚖️ Acc | 🔍 Recall | 🎯 Precision |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
